@@ -6,23 +6,13 @@
 This repo represents my attempts to build a resaonable PrivacyIdea docker image. 
 
 ## Usage
-This is what I'm running to test with. Currently doesn't work:
+Currently this is just for testing, it does not work and therefore no production recommendations are made.
 
+The following will create a folder at `/tmp/privacyidea-data` to store persistant data (sqlite database, various keys)
 ```
-# Build the image
-docker build -t privacyidea .
-
-# Create a directory on the host to keep data in
-mkdir /tmp/privacyidea-data
-
-# Initialize the database
-docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea init
-
-# Add a new user
-docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea admin add admin
-
-# Run the server
-docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea runserver --port 5000 --host 0.0.0.0
+make docker # build the docker image
+make admin # initialize the database and keys if needed, then create the first user named admin
+make runserver # start the development server on port 5000
 ```
 
 Alternatives/what about...

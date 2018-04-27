@@ -10,10 +10,16 @@ fi
 PATH=$HOME/.local/bin:$PATH
 
 init() {
-  mkdir -p /data/keys
   pi-manage createdb
-  pi-manage create_enckey
-  pi-manage create_audit_keys
+  if [ ! -f /data/encfile ]; then
+    pi-manage create_enckey
+  fi
+  if [ ! -d /data/keys ]; then
+    mkdir /data/keys
+  fi
+  if [ ! -f /data/keys/private.pem ]; then
+    pi-manage create_audit_keys
+  fi
 }
 
 case $1 in
