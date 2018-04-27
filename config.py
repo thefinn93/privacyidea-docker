@@ -2,7 +2,7 @@ import os
 import logging
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-SQL_ALCHEMY_DATABASE_URI = os.environ.get('DB_CONNECT_STRING', 'sqlite:////data/privacyidea.db')
+SQLALCHEMY_DATABASE_URI = os.environ.get('DB_CONNECT_STRING', 'sqlite:////data/privacyidea.db')
 PI_ENCFILE = os.environ.get("PI_ENCFILE", "/data/encfile")
 PI_HSM = os.environ.get("PI_HSM", "default")
 PI_AUDIT_MODULE = os.environ.get("PI_AUDIT_MODULE", "privacyidea.lib.auditmodules.sqlaudit")
