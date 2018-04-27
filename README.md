@@ -1,4 +1,4 @@
-# PrivacyIdea Docker: A Work In Progress
+# PrivacyIdea Docker
 
 
 **This is a work in progress and will not work right out of the box, or possibly at all**
