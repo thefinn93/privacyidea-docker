@@ -9,9 +9,19 @@ This repo represents my attempts to build a resaonable PrivacyIdea docker image.
 This is what I'm running to test with. Currently doesn't work:
 
 ```
+# Build the image
+docker build -t privacyidea .
+
+# Create a directory on the host to keep data in
 mkdir /tmp/privacyidea-data
+
+# Initialize the database
 docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea init
-docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea admin add finn
+
+# Add a new user
+docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea admin add admin
+
+# Run the server
 docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea runserver --port 5000 --host 0.0.0.0
 ```
 
