@@ -5,6 +5,16 @@
 
 This repo represents my attempts to build a resaonable PrivacyIdea docker image. 
 
+## Usage
+This is what I'm running to test with. Currently doesn't work:
+
+```
+mkdir /tmp/privacyidea-data
+docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea init
+docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea admin add finn
+docker run -ti -v /tmp/privacyidea-data:/data -p 5000:5000 -e PI_LOGLEVEL=DEBUG privacyidea runserver --port 5000 --host 0.0.0.0
+```
+
 Alternatives/what about...
 * The [official one](https://github.com/privacyidea/docker) doesn't seem to have been updated since 2014.
   It uses Ubuntu Trusty and doesn't seem like it will work with current privacyidea. I did not actually try.
