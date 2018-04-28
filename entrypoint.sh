@@ -3,7 +3,7 @@ set -ex
 echo $@
 if [ $(id -u) = 0 ]; then
   chown -R privacyidea /data
-  sudo -u privacyidea $0 $@
+  sudo -EH -u privacyidea $0 $@
   exit 0
 fi
 

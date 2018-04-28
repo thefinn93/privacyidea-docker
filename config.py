@@ -1,7 +1,12 @@
 import os
 import logging
+import sys
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
+if SECRET_KEY is None:
+    print("SECRET_KEY not set! Refusing to start")
+    sys.exit(1)
+
 SQLALCHEMY_DATABASE_URI = os.environ.get('DB_CONNECT_STRING', 'sqlite:////data/privacyidea.db')
 PI_ENCFILE = os.environ.get("PI_ENCFILE", "/data/encfile")
 PI_HSM = os.environ.get("PI_HSM", "default")
